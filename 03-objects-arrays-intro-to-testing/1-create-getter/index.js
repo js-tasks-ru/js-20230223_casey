@@ -8,7 +8,10 @@ export function createGetter(path) {
  
   return function(obj) {
     const retrievedValue = keys.reduce((ob, key) => {
-      return (ob ? ob[key] : undefined);
+      if (ob && ob[key]) {
+        return ob[key];
+      }
+      return;
     },
     obj);
     return retrievedValue;
