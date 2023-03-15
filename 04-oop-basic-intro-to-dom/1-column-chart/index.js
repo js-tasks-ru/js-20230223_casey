@@ -30,7 +30,7 @@ export default class ColumnChart {
       }
 
       const maxValue = Math.max(...this.data);
-      const scale = 50 / maxValue;
+      const scale = this.chartHeight / maxValue;
 
       return this.data.map(item => {
         const percent = (item / maxValue * 100).toFixed(0) + '%';
@@ -46,7 +46,7 @@ export default class ColumnChart {
 
     getTemplate() {
       return `
-        <div class="column-chart ${this.getLoadingClass()}" style="--chart-height: 50">
+        <div class="column-chart ${this.getLoadingClass()}" style="--chart-height: ${this.chartHeight}">
             <div class="column-chart__title">
                 ${this.label}
                 ${this.link && `<a href="/${this.link}" class="column-chart__link">View all</a>`}
