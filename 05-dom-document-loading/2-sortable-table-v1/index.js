@@ -80,7 +80,7 @@ export default class SortableTable {
 
     currentColumn.dataset.order = order;
 
-    // this.subElements.body.innerHTML = this.getTableRows(sortedData);
+    this.subElements.body.innerHTML = this.renderTableRow(sortedData);
   }
 
   sortData(field, order) {
