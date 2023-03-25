@@ -42,25 +42,18 @@ export default class SortableTable {
       order: 'asc',
     };
     this.isSortLocally = isSortLocally;
-    // this.data = data;
-    // this.sorted = sorted;
 
     this.render();
     this.updateComponent();
-    // this.sort(this.sorted.id, this.sorted.order);
     this.initEventListeners();
   }
 
   async updateComponent() {
-    // this.element.firstElementChild.classList.add('column-chart_loading');
-
     const data = await this.loadData(this.sorted.id, this.sorted.order, this.start, this.end);
+
     if (data && Object.values(data).length) {
       this.subElements.body.innerHTML = this.renderTableRow(data);
-      // this.element.firstElementChild.classList.remove('column-chart_loading');
     }
-   
-    // return data;
   }
 
   updateRows = (data) => {
@@ -95,7 +88,6 @@ export default class SortableTable {
   async sortOnServer (id, order) {
     const data = await this.loadData(id, order, this.start, this.end);
 
-    // this.renderRows(data);
     this.subElements.body.innerHTML = this.renderTableRow(data);
   }
 
@@ -111,6 +103,7 @@ export default class SortableTable {
 
     const allColumns = this.element.querySelectorAll('.sortable-table__cell[data-id]');
     const currentColumn = this.element.querySelector(`.sortable-table__cell[data-id="${id}"]`);
+
     // NOTE: Remove sorting arrow from other columns
     allColumns.forEach(column => {
       column.dataset.order = '';
@@ -244,6 +237,4 @@ export default class SortableTable {
     this.element = null;
     this.subElements = {};
   }
-
-
 }
