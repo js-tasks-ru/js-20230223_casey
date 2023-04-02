@@ -11,7 +11,7 @@ export default class SortableList {
     }
 
     getTemplate() {
-      return `<div id="list"></div>`;
+      return `<ul class="sortable-list"></ul>`;
     }
 
     render() {
